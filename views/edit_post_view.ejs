@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <!-- Header -->
+    <%- include ('./partials/header.ejs', {userid: user.id, page: 'Create Post'}) %>
+<body>
+    <!-- Navbar -->
+    <%- include ('./partials/nav.ejs', {page: 'Create Post'}) %>
+    <div class ="mainpage">
+        <main class="editpostcontainer">
+            <div class="editpostheader">
+                <h1>Edit <%=user.username%>'s Post</h1>
+            </div>
+                <% if (post.image) { %>
+                    <div class ="newfaceform">
+                        <form id="newpostform" action="/users/<%=user.id%>/posts/<%=post.id%>/edit?_method=PUT" method="POST"> 
+                            <label class="imagelabel" for="post_body"> Image Url : </label>
+                            <input value="<%=post.image%>" class="imagequery" type="text" id="post_body" name="image" placeholder="HTTP://">
+                            <textarea maxlength="350" size="50" class="inputquery" type="text" id="post_body" name="body" placeholder="Whats on your mind?">
+                                <%=post.body%>
+                            </textarea>
+                            <button class="postsubmitbtn"> Submit </button>
+                        </form>
+                    </div>
+                <% } %>
+                <% if (post.image === undefined) { %>
+                    <div class ="newspaceform">
+                        <form id="newpostform" action="/users/<%=user.id%>/posts/<%=post.id%>/edit?_method=PUT" method="POST"> 
+                            <textarea maxlength="350" size="50" class="inputquery" type="text" id="post_body" name="body" placeholder="Whats on your mind?">
+                                <%=post.body%>
+                            </textarea>
+                            <button class="postsubmitbtn"> Submit </button>
+                        </form>
+                    </div>
+                <%}%>
+        </main>
+    </div>
+</body>
+</html>
+    

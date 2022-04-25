@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- Header -->
+    <%- include ('./partials/header.ejs', {page:'User Post'}) %>
+<body>
+    <!-- Navbar -->
+    <%- include ('./partials/nav.ejs',{userid:user.id, page:'User Post'}) %>
+    <div class ="mainpage">
+        <main>
+            <h2 class="fullpostheader"><%=user.username%>'s post</h2>
+            <img class="userthumbnail fullpostthumbnail" src="<%=user.profilePic%>">
+            <a class="postpageuserlink" href="/users/<%=user.id%>/posts"></a>
+            <div class="singlepostcontainer">
+                <% if (post.image) { %>
+                    <p class="fullpostdate"><%=post.createdAt%></p>
+                    <img class="fullpostimage" src="<%=post.image%>">   
+                    <h5 class="fullpostcaption"><%=post.body%></h5>
+                <% } %>
+                <% if (post.image === undefined) { %>
+                    <p class="fullpostdate fullpostspacedate"><%=post.createdAt%></p>
+                    <h1 class="fullpostcaption fullpostspace"><%=post.body%></h1>
+                <%}%>
+            </div>
+        </main>
+    </div>

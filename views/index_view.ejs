@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include ('./partials/header.ejs', {page: 'Users'}) %>
+<body>
+    
+    <%- include ('./partials/nav.ejs', {page: 'Users'}) %>
+    <div class="mainpage">
+        <header class="user-index-header"><h1>Users</h1></header>
+        <main style="display: flex;flex-direction: row;flex-wrap: wrap;">
+            <% for(let ndx=0;ndx < users.length; ndx++){ %>
+                <% const user = users[ndx] %>
+                <div class= "profile-pic-container" >
+                    <div><a href="/users/<%= user.id %>" ><img class="profile-pic" src="<%= user.profilePic %>" alt="<%= user.username %>"/></a></div>
+                    <div style="text-align: center;"><a href="/users/<%= user.id %>" >@<%= user.username %></a></div>
+                </div>
+                <%}%>
+        </main>
+    </div>

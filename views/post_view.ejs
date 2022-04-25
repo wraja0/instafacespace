@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- Header -->
+    <%- include ('./partials/header.ejs', {page:'User Post'}) %>
+<body>
+    <!-- Navbar -->
+    <%- include ('./partials/nav.ejs',{userid:user.id, page:'User Post'}) %>
+    <div class ="mainpage">
+        <main>
+            <div class="postspage">
+                <div class ="userpostheadcontainer">
+                    <h1 class="userpostheader">
+                        <%= user.username %>'s posts 
+                    </h1>
+                </div>
+                <div class ="alluserpostscontainer">
+                    <% for(let i =0; i < posts.length; i++) { %>
+                        <% let post = posts[i] %>
+                        <div class="postcontainer">
+                            <a class ="postlink" href="/users/<user.id>/posts/post.id/see"></a>
+                            <figure class="thumbnailcontainer">
+                                <img class="userthumbnail" src="<%=user.profilePic%>">
+                            </figure>
+                            <div class="postusernamehead">
+                                <h4>
+                                    <%=user.username%>
+                                </h4>
+                            </div>
+                            <div class="postdate">
+                                <%=post.createdAt%>
+                            </div>
+                            <% if (post.image) { %>
+                                <img class="postimage" src="<%=post.image%>">
+                                <p class="postcaption"><%=post.body%></p>
+                            <% } %>
+                            <% if (post.image === undefined) { %>
+                                <h5 class="textpost"><%=post.body%></h5>
+                            <% } %>
+                            <a href="/users/<%=user.id%>/posts/<%=post.id%>/edit" class="editlink">Edit</a>
+                            <form action ="/users/<%=user.id%>/posts/<%=post.id%>?_method=DELETE" method="POST">
+                                <button type="submit" class = "deletebutton">Delete</button>
+                            </form>
+                            <a class ="postlink" href="/users/<%=user.id%>/posts/<%=post.id%>/see"></a>
+                            <a class ="postlinkremainder" href="/users/<%=user.id%>/posts/<%=post.id%>/see"></a>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+            <!-- <img src="=posts[0].image "> -->
+        </main>
+    </div>
+</body>
+</html>
+    

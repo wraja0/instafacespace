@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include ('./partials/header.ejs', {page: 'User Profile'}) %>
+<body>
+    
+    <%- include ('./partials/nav.ejs', {userid: user.id, page:'User Profile'}) %>
+    <div class="mainpage">
+        <header style="display:flex;flex-direction: row; padding: 5% 10%">
+            <img class="profile-pic" src="<%= user.profilePic %>" alt="<%= user.username %>"/> 
+            <div style="padding-left: 2.5%;">
+                <h3 style="padding-bottom:5%;margin-top:20px"><%= user.username %></h3>
+                <p><%= user.bio %></p>
+            </div>
+            <div style="align-self: right;">
+                <form action="/users/<%= user.id %>/edit">
+                    <input type="submit" value="Edit"/>
+                </form>
+                <form action="/users/<%= user.id %>?_method=DELETE" method="POST">
+                    <input type="submit" value="Delete"/>
+                </form>
+            </div>
+        </header>
+        <main class="user-posts-container">
+        <% for(let ndx=0;ndx < user.posts.length; ndx++){ %>
+            <% const post = user.posts[ndx] %>
+            <div class='gallery'>
+                <a style=" position: relative;z-index: 1; width: 25%;height: auto;" href="./<%= user.id %>/posts/<%= post.id %>/see"><img class="user-posts" src="<%= post.image %>"/></a>
+            </div>
+            
+            <%}%>
+        </main>
+    </div>
+</body>
+</html>

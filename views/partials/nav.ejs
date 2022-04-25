@@ -1,0 +1,63 @@
+<div class = "navbar">
+    <ul>
+        <li class = "navlist active">
+            <a href="/users">
+                <span class="navicon">
+                    <ion-icon name="home-outline"></ion-icon>
+                </span>
+                <span class="navtext">Home</span>
+            </a>
+        </li>
+        <% if(page !=='Users' && page !=='Create User' && page !=='Edit User') { %>
+            <li class = "navlist">
+                <% if(page=='Create Post') { %>
+                    <a href="#">
+                <% } else { %>
+                    <a href="/users/<%= userid %>/posts/new">
+                <% } %>
+                    <span class="navicon">
+                        <ion-icon name="create-outline"></ion-icon>
+                    </span>
+                    <span class="navtext">New Post</span>
+                </a>
+            </li>
+        <% } else if (page==='Users') { %>
+            <li class = "navlist">
+                <a href="/users/create">
+                    <span class="navicon">
+                        <ion-icon name="create-outline"></ion-icon>
+                    </span>
+                    <span class="navtext"> New User</span>
+                </a>
+            </li>
+            <% } %>
+        <li class = "navlist">
+            <% function random(n) {return Math.floor(Math.random() * n)} %>
+            <a href="#">
+                <span class="navicon">
+                    <ion-icon name="locate-outline"></ion-icon>
+                    </span>
+                <span class="navtext"> Show</span>
+            </a>
+        </li>
+        <li class = "navlist">
+            <a href="#">
+                <span class="navicon">
+                    <ion-icon name="refresh-outline"></ion-icon>
+                </span>
+                <span class="navtext"> Edit</span>
+            </a>
+        <li class = "navlist">
+            <a href="#">
+                <span class="navicon">
+                    <ion-icon name="build-outline"></ion-icon>
+                </span>
+                <span class="navtext"> More</span>
+            </a>
+        </li>
+        </li>
+        <div class ="indicator">
+        </div>
+    </ul>
+</div>
+<script src="/scripts/navbar.js"></script>

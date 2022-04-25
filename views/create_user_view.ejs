@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Header -->
+<%- include ('./partials/header.ejs', {page:'Create User'}) %>
+<body>
+        <!-- Navbar -->
+        <%- include ('./partials/nav.ejs', {page:'Create User'}) %>
+    <div class="mainpage"?
+        <main>
+            <div style="text-align:center;padding-top: 25px">
+                <h2>Create a New User</h2>
+            </div>
+            <div class="create-edit-form">
+            <form action="/users" method="POST">
+                <div class="form-input">
+                    <div><label>Username</label></div>
+                    <div><input type="text" placeholder="username" name="username"/></div>
+                </div>
+                <div class="form-input">
+                    <div><label>Email:</label></div>
+                    <div><input type="email" placeholder="email@123.com" name="email"/></div>
+                </div>
+                <div class="form-input">
+                    <div><label>Pic Link:</label></div>
+                    <div><input type="text" placeholder="profilepic url" name ="profilePic"/></div>
+                </div>
+                <div class="form-input">
+                    <div><label>Bio</label></div>
+                    <div><textarea name="bio" placeholder="describe yourself"></textarea></div>
+                </div>
+                <div class="form-input">
+                    <div><label>Birthday</label></div>
+                    <div><input type="date" placeholder="date" name ="birthday"/></div>
+                </div>
+                <div class="form-input">
+                    <button>Submit</button>
+                </div>
+            </form>
+        </div>
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- Header -->
+    <%- include ('./partials/header.ejs', {userid: userid, page: 'Create Post'}) %>
+<body>
+    <!-- Navbar -->
+    <%- include ('./partials/nav.ejs', {page: 'Create Post'}) %>
+    <div class ="mainpage">
+        <main>
+            <div class="newpostcontainer">
+                <div class="newface">
+                    <div class ="buttonconatainer buttoncontainerright">
+                        <button class="newfacebtn btn1"> New Face </button>
+                    </div>
+                </div>
+                <div class="newspace">
+                    <div class ="buttonconatainer ">
+                        <button class="newspacebtn btn2"> New Space </button>
+                    </div>
+                </div>
+                <div class="newspacepage">
+                    <h1 class="spacepageheader">New Space</h1>
+                    <div class ="newspaceform">
+                        <form id="newpostform" action="/users/<%=userid%>/posts/new" method="POST"> 
+                            <textarea maxlength="350" size="50" class="inputquery" type="text" id="post_body" name="body" placeholder="Whats on your mind?">
+                            </textarea>
+                            <button class="postsubmitbtn"> Submit </button>
+                        </form>
+                    </div>
+                </div>
+                <div class="newfacepage">
+                    <h1 class="spacepageheader">New Face</h1>
+                    <div class ="newfaceform">
+                        <form id="newpostform" action="/users/<%=userid%>/posts/new" method="POST"> 
+                            <label class="imagelabel" for="post_body"> Image Url : </label>
+                            <input class="imagequery" type="text" id="post_body" name="image" placeholder="HTTP://">
+                            <textarea maxlength="350" size="50" class="inputquery" type="text" id="post_body" name="body" placeholder="Whats on your mind?">
+                            </textarea>
+                            <button class="postsubmitbtn"> Submit </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+<script src="/scripts/newposts.js"></script>
+</html>
+    
